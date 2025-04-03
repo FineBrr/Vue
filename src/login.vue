@@ -25,10 +25,9 @@ export default {
   },
   methods: {
     login() {
-      // Перевірка облікових даних
       if (this.username === 'admin' && this.password === 'password') {
         localStorage.setItem('authenticated', true);
-        localStorage.setItem('username', this.username); // Зберігаємо ім'я користувача
+        localStorage.setItem('username', this.username);
         this.$router.push('/dashboard');
       } else {
         alert('Invalid credentials!');

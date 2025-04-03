@@ -3,25 +3,27 @@ import { createStore } from 'vuex';
 const store = createStore({
     state() {
         return {
-            user: null
+            theme: localStorage.getItem('theme') || 'light',
+            language: localStorage.getItem('language') || 'en'
         };
     },
     mutations: {
-        setUser(state, user) {
-            state.user = user;
+        setTheme(state, theme) {
+            state.theme = theme;
+            localStorage.setItem('theme', theme);
         },
-        logout(state) {
-            state.user = null;
+        setLanguage(state, language) {
+            state.language = language;
+            localStorage.setItem('language', language);
         }
     },
     actions: {
-        login({ commit }, user) {
-            commit('setUser', user);
+        updateTheme({ commit }, theme) {
+            commit('setTheme', theme);
         },
-        logout({ commit }) {
-            commit('logout');
+        updateLanguage({ commit }, language) {
+            commit('setLanguage', language);
         }
     }
 });
-
 export default store;
